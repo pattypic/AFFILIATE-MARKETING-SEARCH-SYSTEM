@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %} All links {% endblock %}{% block content %}
+  <h1>All Links</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for link in links %}
+        <tr>
+          <td>{{ link.name }}</td>
+          <td><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+
+

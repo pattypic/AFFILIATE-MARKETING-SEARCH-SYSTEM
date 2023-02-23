@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %} Search {% endblock %}{% block content %}
+    <h1>Search Links</h1>
+    <form method="POST" action="{{ url_for('views.search') }}">
+            {{ form.csrf_token }}
+        <div class="form-group">
+            {{ form.searched.label }} {{ form.searched(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    {% if searched %}
+        <h2>Search Results:</h2>
+        {% if links %}
+            <ul>
+                {% for link in links %}
+                    <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}
